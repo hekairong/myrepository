@@ -1,0 +1,70 @@
+/** 
+ * <pre>项目名称:education-consumer 
+ * 文件名称:User.java 
+ * 包名:com.jk.model.zwt 
+ * 创建日期:2018年10月31日下午8:14:01 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.model.zwt;
+
+import java.io.Serializable;
+
+/** 
+ * <pre>项目名称：education-consumer    
+ * 类名称：User    
+ * 类描述：    
+ * 创建人：张文韬  
+ * 创建时间：2018年10月31日 下午8:14:01    
+ * 修改人：张文韬
+ * 修改时间：2018年10月31日 下午8:14:01    
+ * 修改备注：       
+ * @version </pre>    
+ */
+
+public class ZwtUser implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
+	private String userid;
+	
+	private String username;
+	
+	private String userpassword;
+	
+	private String powerid;
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getUserpassword() {
+		return userpassword;
+	}
+
+	public void setUserpassword(String userpassword) {
+		this.userpassword = userpassword;
+	}
+
+	public String getPowerid() {
+		return powerid;
+	}
+
+	public void setPowerid(String powerid) {
+		this.powerid = powerid;
+	}
+	
+	
+
+}

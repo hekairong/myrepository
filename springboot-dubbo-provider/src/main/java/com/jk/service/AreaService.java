@@ -16,9 +16,9 @@ import com.jk.model.User;
  * <pre>项目名称：springboot-dubbo-provider    
  * 类名称：AreaService    
  * 类描述：    
- * 创建人： 任智伟
+ * 创建人： 贺凯荣
  * 创建时间：2018年11月13日 下午4:20:32    
- * 修改人： 任智伟  
+ * 修改人： 贺凯荣  
  * 修改时间：2018年11月13日 下午4:20:32    
  * 修改备注：       
  * @version </pre>    
@@ -28,9 +28,9 @@ public interface AreaService {
 	List<TreeBean> getNavTree();
 	
 	/** <pre>queryUser(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月13日 下午6:58:50    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月13日 下午6:58:50    
 	 * 修改备注： 
 	 * @return</pre>    
@@ -38,9 +38,9 @@ public interface AreaService {
 	List<User> queryUser();
 
 	/** <pre>queryCarById(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月13日 下午6:58:58    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月13日 下午6:58:58    
 	 * 修改备注： 
 	 * @param userid
@@ -49,9 +49,9 @@ public interface AreaService {
 	User queryCarById(String userid);
 
 	/** <pre>updaUser(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月13日 下午6:59:04    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月13日 下午6:59:04    
 	 * 修改备注： 
 	 * @param user</pre>    
@@ -59,9 +59,9 @@ public interface AreaService {
 	void updaUser(User user);
 
 	/** <pre>addUser(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月13日 下午6:59:09    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月13日 下午6:59:09    
 	 * 修改备注： 
 	 * @param user</pre>    
@@ -69,9 +69,9 @@ public interface AreaService {
 	void addUser(User user);
 
 	/** <pre>delUser(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月13日 下午6:59:14    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月13日 下午6:59:14    
 	 * 修改备注： 
 	 * @param userid</pre>    

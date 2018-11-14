@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.yunschool.YunSchoolMapper">
+   
+	<select id="findChart" resultType="String">
+	
+	select *
+		from t_month 
+		group by month
+		 order by month
+	
+	</select>
+   <select id="queryUserEntityByuserid" resultType="com.jk.model.User">
+       select * from t_user where userid=#{userid}
+   </select>
+   <select id="querycoursebystudentid" resultType="com.jk.model.Course">
+       select courseid,
+              coursename,
+              starttime,
+              userid     from   t_course_detail 
+                  where 
+                   studentid=#{studentid}
+                          
+   </select>
+    <select id="recursionTree" resultType="com.jk.model.tree.Tree" >
+		select 
+		a.id as id,a.text as text,a.url as url,a.pid as pid 
+		from t_tree a ,t_tree_user b ,t_user c
+		where a.id = b.treeid and pid= #{pid} and b.powerid = c.powerid and c.userid = #{userid}
+       
+    </select>
+
+    <insert id="addClassRoom">
+    
+    insert into t_classroom (classroomid,classroomname,classroomstarttime,classroomgrade,classroomsubject,instructor,classroomstudent,specifyteacher,classroominfo) 
+    values (#{classroomid},#{classroomname},#{classroomstarttime},#{classroomgrade},#{classroomsubject},#{instructor},#{classroomstudent},#{specifyteacher},#{classroominfo})
+    
+    </insert>
+    
+    <select id="querySubjectList" resultType="com.jk.model.subject.Subject">
+    
+    select * from t_course
+    
+    </select>
+    
+    <select id="queryTeacherList" resultType="com.jk.model.teacher.Teacher">
+    
+    select * from t_teacher
+    
+    </select>
+    
+    <select id="queryHelpTeacherList" resultType="com.jk.model.helpteacher.HelpTeacher">
+    
+    select * from t_helpteacher
+    
+    </select>
+    
+    <select id="queryStudentList" resultType="com.jk.model.student.Student">
+    
+    select * from t_student
+    
+    </select>
+    
+    <select id="myCloudSchool" resultType="com.jk.model.yunschool.YunSchool">
+    
+    select t1.approvalstatus,t1.classroomgrade,t1.classroomid,t1.classroominfo,t1.classroomname,t1.classroomstarttime,t1.classroomstudent,t2.coursename,t1.specifyteacher,t3.teachername from t_classroom t1, t_course t2,t_teacher t3 where t1.classroomsubject=t2.cousrseid and t1.instructor=t3.teacherid
+    
+    </select>
+    
+    <select id="queryYunSchoolById" resultType="com.jk.model.yunschool.YunSchool">
+    
+    select * from t_classroom where classroomid =#{classroomid}
+    
+    </select>
+    
+    <select id="queryYunSchoolPage" resultType="com.jk.model.yunschool.YunSchool">
+    
+    select * from t_classroom
+    
+    </select>
+   
+    <select id="selectcourse" resultType="com.jk.model.Course" >
+       select * from t_course c 
+                             left join  t_user u on c.userid=u.userid 
+                                 where  c.userid=#{userid}
+    </select>
+    
+   <select id="getNode" resultType="com.jk.model.StuTree">
+	   select * from t_stutree  where pid=#{id}
+	</select>
+	
+	<select id="selectTree" resultType="com.jk.model.StuTree">
+      select * from t_stutree
+    </select>
+    <insert id="addclassstu">
+
+    insert into t_calssroom_student (id,classroomid,stuid) values (#{uuidstring1},#{uuidstring},#{split})
+    
+    </insert>
+    
+        <insert id="adduser">
+       insert into t_user(userid,username,userpassword,teacherid,studentid,powerid)
+                   values(#{userid},#{username},#{userpassword},#{teacherid},#{studentid},#{powerid})
+    </insert>
+    <insert id="addstudent">
+       insert into t_student(studentid,studentname)
+       values
+       (#{studentid},#{studentname})
+    </insert>
+    <insert id="addteacher">
+      insert into t_teacher(teacherid,teachername)
+      						values
+      						(#{teacherid},#{teachername})
+    </insert>
+    
+</mapper>

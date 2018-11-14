@@ -1,0 +1,30 @@
+package com.jk.model;
+
+import java.io.Serializable;
+
+public class Course implements Serializable{
+    private String courseid;
+    private String coursename;
+    private String starttime;
+    
+	public String getStarttime() {
+		return starttime;
+	}
+	public void setStarttime(String starttime) {
+		this.starttime = starttime;
+	}
+	public String getCourseid() {
+		return courseid;
+	}
+	public void setCourseid(String courseid) {
+		this.courseid = courseid;
+	}
+	public String getCoursename() {
+		return coursename;
+	}
+	public void setCoursename(String coursename) {
+		this.coursename = coursename;
+	}
+    
+    
+}

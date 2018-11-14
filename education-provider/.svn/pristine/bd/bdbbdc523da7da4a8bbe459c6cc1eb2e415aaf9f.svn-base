@@ -1,0 +1,174 @@
+/** 
+ * <pre>项目名称:education-provider 
+ * 文件名称:YunSchoolMapper.java 
+ * 包名:com.jk.mapper.yunschool 
+ * 创建日期:2018年10月30日下午3:32:59 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.mapper.yunschool;
+
+import java.util.List;
+
+import com.jk.model.helpteacher.HelpTeacher;
+import com.jk.model.student.Student;
+import com.jk.model.subject.Subject;
+import com.jk.model.teacher.Teacher;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.jk.model.Course;
+import com.jk.model.StuTree;
+
+import org.apache.ibatis.annotations.Param;
+
+
+import com.jk.model.tree.Tree;
+import com.jk.model.yunschool.YunSchool;
+
+/** 
+ * <pre>项目名称：education-provider    
+ * 类名称：YunSchoolMapper    
+ * 类描述：    
+ * 创建人：贺凯荣  
+ * 创建时间：2018年10月30日 下午3:32:59    
+ * 修改人：贺凯荣
+ * 修改时间：2018年10月30日 下午3:32:59    
+ * 修改备注：       
+ * @version </pre>    
+ */
+public interface YunSchoolMapper {
+
+	/** <pre>recursionTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午3:39:37    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午3:39:37    
+	 * 修改备注： 
+	 * @param pid
+	 * @param userid 
+	 * @return</pre>    
+	 */
+	List<Tree> recursionTree(@Param("pid")String pid, @Param("userid")String userid);
+
+	/** <pre>addClassRoom(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午10:36:14    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午10:36:14    
+	 * 修改备注： 
+	 * @param yunschool</pre>    
+	 */
+	void addClassRoom(YunSchool yunschool);
+
+	/** <pre>querySubjectList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:17:47    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:17:47    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Subject> querySubjectList();
+
+	/** <pre>queryTeacherList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:17:51    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:17:51    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Teacher> queryTeacherList();
+
+	/** <pre>queryHelpTeacherList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:17:54    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:17:54    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<HelpTeacher> queryHelpTeacherList();
+
+	/** <pre>queryStudentList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:17:57    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:17:57    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Student> queryStudentList();
+
+	/** <pre>myCloudSchool(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 下午8:21:36    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 下午8:21:36    
+	 * 修改备注： 
+	 * @param yunschool
+	 * @return</pre>    
+	 */
+	List<YunSchool> myCloudSchool(YunSchool yunschool);
+
+	/** <pre>queryYunSchoolById(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 下午11:21:29    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 下午11:21:29    
+	 * 修改备注： 
+	 * @param yunschool
+	 * @return</pre>    
+	 */
+	YunSchool queryYunSchoolById(YunSchool yunschool);
+
+	/** <pre>queryYunSchoolPage(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年11月1日 上午10:28:51    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年11月1日 上午10:28:51    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<YunSchool> queryYunSchoolPage();
+	
+	/** <pre>selectcourse(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 上午10:47:47    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 上午10:47:47    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Course> selectcourse(@Param("userid")String userid);
+
+	/** <pre>getNode(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午4:07:07    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午4:07:07    
+	 * 修改备注： 
+	 * @param id
+	 * @return</pre>    
+	 */
+	List<StuTree> getNode(@Param("id")String id);
+
+	/** <pre>selectTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年11月1日 下午5:50:07    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年11月1日 下午5:50:07    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<StuTree> selectTree();
+
+	/** <pre>selectTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午4:23:00    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午4:23:00    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+}

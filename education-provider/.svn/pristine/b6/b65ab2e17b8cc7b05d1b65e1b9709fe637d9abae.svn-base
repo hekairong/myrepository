@@ -1,0 +1,41 @@
+/** 
+ * <pre>项目名称:education-provider 
+ * 文件名称:YunSchoolMapper.java 
+ * 包名:com.jk.mapper.yunschool 
+ * 创建日期:2018年10月30日下午3:32:59 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.mapper.yunschool;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.jk.model.tree.Tree;
+
+/** 
+ * <pre>项目名称：education-provider    
+ * 类名称：YunSchoolMapper    
+ * 类描述：    
+ * 创建人：贺凯荣  
+ * 创建时间：2018年10月30日 下午3:32:59    
+ * 修改人：贺凯荣
+ * 修改时间：2018年10月30日 下午3:32:59    
+ * 修改备注：       
+ * @version </pre>    
+ */
+public interface YunSchoolMapper {
+
+	/** <pre>recursionTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午3:39:37    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午3:39:37    
+	 * 修改备注： 
+	 * @param pid
+	 * @param userid 
+	 * @return</pre>    
+	 */
+	List<Tree> recursionTree(@Param("pid")String pid, @Param("userid")String userid);
+
+}

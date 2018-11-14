@@ -1,0 +1,108 @@
+/** 
+ * <pre>项目名称:education-consumer 
+ * 文件名称:IndexController.java 
+ * 包名:com.jk.controller.index 
+ * 创建日期:2018年10月30日下午2:18:47 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.controller.index;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jk.model.yunschool.YunSchool;
+import com.jk.service.IeduService;
+
+/** 
+ * <pre>项目名称：education-consumer    
+ * 类名称：IndexController    
+ * 类描述：    
+ * 创建人：贺凯荣  
+ * 创建时间：2018年10月30日 下午2:18:47    
+ * 修改人：贺凯荣
+ * 修改时间：2018年10月30日 下午2:18:47    
+ * 修改备注：       
+ * @version </pre>    
+ */
+@Controller
+@RequestMapping("index")
+public class IndexController {
+	
+	@Autowired IeduService ieduService;
+	//首页
+	@RequestMapping("toshouye")
+	public String toshouye(){
+		return "WEB-INF/myCloudschool/cloudschoolPage";
+	}
+
+	@RequestMapping("shenpiOne")
+	public String shenpiOne(){
+		return "ws/shenpiOne";
+	}
+	
+	@RequestMapping("toaddPage")
+	public String toaddPage(){
+		return "WEB-INF/myCloudschool/add";
+	}
+	//系列课程新增页面
+	@RequestMapping("toaddmorePage")
+	public String toaddmorePage(){
+		return "WEB-INF/myCloudschool/addmore";
+	}
+	//系列子课程新增页面
+	@RequestMapping("toNextPage")
+	public String toNextPage(){
+		return "WEB-INF/myCloudschool/addmoreNext";
+	}
+	//我的云课堂页面
+	@RequestMapping("tomycloudschoolPage")
+	public String tomycloudschoolPage(){
+		return "WEB-INF/myCloudschool/myCloudschoolPage";
+	}
+	//分类添加课堂页面
+	@RequestMapping("toaddtypePage")
+	public String toaddtypePage(){
+		return "WEB-INF/myCloudschool/typeCloudschoolPage";
+	}
+	
+	//查询助教页面
+	@RequestMapping("tohelpteacherPage")
+	public String tohelpteacherPage(){
+		return "WEB-INF/myCloudschool/helpteacherPage";
+		
+	}
+	
+	//查询学生页面
+	@RequestMapping("tostudentPage")
+	public String tostudentPage(){
+		return "WEB-INF/myCloudschool/studentPage";
+		
+	}
+	
+	//单课程添加
+	@RequestMapping("toaddonePage")
+	public String toaddonePage(){
+		return "WEB-INF/myCloudschool/add";
+	}
+	
+	//我的云课程页面
+	@RequestMapping("queryYunSchoolPage")
+	public String queryYunSchoolPage(Model model,YunSchool yunschool){
+		List<YunSchool> yunschoollist = ieduService.queryYunSchoolPage(yunschool);
+		model.addAttribute("list", yunschoollist);
+		return "WEB-INF/myCloudschool/myCloudschoolPage";
+		
+	}
+	
+	//老师个人中心
+    @RequestMapping("tofirstPage")
+    public String tofirstPage(){
+    	return "WEB-INF/myCloudschool/teachercenterPage";
+    }
+	
+
+}

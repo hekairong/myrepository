@@ -1,0 +1,23 @@
+/** 
+ * <pre>项目名称:education-consumers 
+ * 文件名称:WSmodel.java 
+ * 包名:com.jk.model 
+ * 创建日期:2018年10月29日下午4:42:11 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.model;
+
+/** 
+ * <pre>项目名称：education-consumers    
+ * 类名称：WSmodel    
+ * 类描述：    
+ * 创建人：王硕 3190552680@qq.com    
+ * 创建时间：2018年10月29日 下午4:42:11    
+ * 修改人：王硕 3190552680@qq.com  
+ * 修改时间：2018年10月29日 下午4:42:11    
+ * 修改备注：       
+ * @version </pre>    
+ */
+public class WSmodel {
+
+}

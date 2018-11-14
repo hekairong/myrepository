@@ -1,0 +1,284 @@
+package com.jk.service;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.alibaba.fastjson.JSONObject;
+import com.jk.model.tree.Tree;
+import com.jk.model.zwt.User;
+import com.jk.model.Course;
+import com.jk.model.Org;
+import com.jk.model.StuTree;
+import com.jk.model.User;
+import com.jk.model.helpteacher.HelpTeacher;
+import com.jk.model.student.Student;
+import com.jk.model.subject.Subject;
+import com.jk.model.teacher.Teacher;
+import com.jk.model.yunschool.YunSchool;
+import com.mongodb.gridfs.GridFSDBFile;
+/** 
+ * <pre>项目名称：education-provider    
+ * 类名称：IeduServiceWS    
+ * 类描述：    
+ * 创建人：王硕 3190552680@qq.com    
+ * 创建时间：2018年10月29日 下午4:39:35    
+ * 修改人：王硕 3190552680@qq.com  
+ * 修改时间：2018年10月29日 下午4:39:35    
+ * 修改备注：       
+ * @version </pre>    
+ */
+public interface IeduService {
+
+	/** <pre>test(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月29日 下午7:51:50    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月29日 下午7:51:50    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	String test();
+	/** <pre>getLogin(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月30日 下午4:44:48    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月30日 下午4:44:48    
+	 * 修改备注： 
+	 * @param username
+	 * @param userpassword
+	 * @param request 
+	 * @return</pre>    
+	 */
+	HashMap<String, Object> getLogin(String username, String userpassword);
+	
+	/** <pre>queryTeacherTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午3:27:35    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午3:27:35    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Tree> queryTeacherTree();
+	
+	/** <pre>queryType(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月31日 下午2:11:34    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月31日 下午2:11:34    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	Map<String, Object> findclass(Integer pageSize, Integer start);
+	/** <pre>selectcourse(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 上午10:45:35    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 上午10:45:35    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Course> selectcourse(String userid);
+
+	/** <pre>addClassRoom(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午10:34:39    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午10:34:39    
+	 * 修改备注： 
+	 * @param yunschool</pre>    
+	 */
+	void addClassRoom(YunSchool yunschool);
+
+	/** <pre>querySubjectList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:15:27    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:15:27    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Subject> querySubjectList();
+
+	/** <pre>queryTeacherList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:15:31    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:15:31    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Teacher> queryTeacherList();
+
+	/** <pre>queryHelpTeacherList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:15:34    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:15:34    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<HelpTeacher> queryHelpTeacherList();
+
+	/** <pre>queryStudentList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:15:38    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:15:38    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Student> queryStudentList();
+
+	/** <pre>myCloudSchool(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 下午8:16:38    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 下午8:16:38    
+	 * 修改备注： 
+	 * @param yunschool
+	 * @return</pre>    
+	 */
+	List<YunSchool> myCloudSchool(YunSchool yunschool);
+
+	/** <pre>queryYunSchoolById(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 下午11:18:34    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 下午11:18:34    
+	 * 修改备注： 
+	 * @param yunschool
+	 * @return</pre>    
+	 */
+	YunSchool queryYunSchoolById(YunSchool yunschool);
+
+	/** <pre>queryYunSchoolPage(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年11月1日 上午10:27:09    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年11月1日 上午10:27:09    
+	 * 修改备注： 
+	 * @param yunschool
+	 * @return</pre>    
+	 */
+	List<YunSchool> queryYunSchoolPage(YunSchool yunschool);
+
+	/** <pre>selectTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午4:58:40    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午4:58:40    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<StuTree> selectTree();
+	/** <pre>ImgUpload(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午11:17:09    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午11:17:09    
+	 * 修改备注： 
+	 * @param file
+	 * @return</pre>    
+	 */
+	HashMap<String, Object> ImgUpload(MultipartFile file);
+	/** <pre>findImgById(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午11:17:17    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午11:17:17    
+	 * 修改备注： 
+	 * @param id
+	 * @return</pre>    
+	 */
+	GridFSDBFile findImgById(String id);
+	/** <pre>addorg(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年11月1日 下午1:40:17    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年11月1日 下午1:40:17    
+	 * 修改备注： 
+	 * @param org
+	 * @return</pre>    
+	 */
+	int addorg(Org org);
+	/** <pre>addstudent(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年11月1日 下午2:11:15    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年11月1日 下午2:11:15    
+	 * 修改备注： 
+	 * @param student</pre>    
+	 */
+	void addstudent(Student student);
+	void addteacher(Teacher teacher);
+	/** <pre>adduser(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年11月1日 下午2:14:38    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年11月1日 下午2:14:38    
+	 * 修改备注： 
+	 * @param user</pre>    
+	 */
+	void adduser(User user);
+
+	/** <pre>selectTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午4:01:19    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午4:01:19    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	
+	
+	
+	/** <pre>queryUserList(这里用一句话描述这个方法的作用)   
+	 * 创建人：张文韬
+	 * 创建时间：2018年10月31日 下午8:38:17    
+	 * 修改人：张文韬
+	 * 修改时间：2018年10月31日 下午8:38:17    
+	 * 修改备注： 
+	 * @param user
+	 * @param offset
+	 * @param limit
+	 * @return</pre>    
+	 */
+	JSONObject queryUserList(User user, Integer offset, Integer limit);
+
+	/** <pre>queryOneUser(这里用一句话描述这个方法的作用)   
+	 * 创建人：张文韬
+	 * 创建时间：2018年11月1日 下午4:04:54    
+	 * 修改人：张文韬
+	 * 修改时间：2018年11月1日 下午4:04:54    
+	 * 修改备注： 
+	 * @param user
+	 * @return</pre>    
+	 */
+	User queryOneUser(User user);
+
+	/** <pre>updateUser(这里用一句话描述这个方法的作用)   
+	 * 创建人：张文韬
+	 * 创建时间：2018年11月1日 下午4:10:16    
+	 * 修改人：张文韬
+	 * 修改时间：2018年11月1日 下午4:10:16    
+	 * 修改备注： 
+	 * @param user</pre>    
+	 */
+	void updateUser(User user);
+
+	/** <pre>deleteUser(这里用一句话描述这个方法的作用)   
+	 * 创建人：张文韬
+	 * 创建时间：2018年11月1日 下午9:49:11    
+	 * 修改人：张文韬
+	 * 修改时间：2018年11月1日 下午9:49:11    
+	 * 修改备注： 
+	 * @param user</pre>    
+	 */
+	void deleteUser(User user);
+
+}

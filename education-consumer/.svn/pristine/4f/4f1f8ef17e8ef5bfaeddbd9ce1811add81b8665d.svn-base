@@ -1,0 +1,97 @@
+package com.jk.service;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+<<<<<<< .mine
+import com.jk.model.WSmodel;
+=======
+import com.jk.model.Course;
+import com.jk.model.StuTree;
+>>>>>>> .r26
+import com.jk.model.tree.Tree;
+/** 
+ * <pre>项目名称：education-provider    
+ * 类名称：IeduServiceWS    
+ * 类描述：    
+ * 创建人：王硕 3190552680@qq.com    
+ * 创建时间：2018年10月29日 下午4:39:35    
+ * 修改人：王硕 3190552680@qq.com  
+ * 修改时间：2018年10月29日 下午4:39:35    
+ * 修改备注：       
+ * @version </pre>    
+ */
+public interface IeduService {
+
+	/** <pre>test(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月29日 下午7:51:50    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月29日 下午7:51:50    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	String test();
+	/** <pre>getLogin(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月30日 下午4:44:48    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月30日 下午4:44:48    
+	 * 修改备注： 
+	 * @param username
+	 * @param userpassword
+	 * @param request 
+	 * @return</pre>    
+	 */
+	HashMap<String, Object> getLogin(String username, String userpassword);
+	/** <pre>queryTeacherTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午3:27:35    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午3:27:35    
+	 * 修改备注： 
+	 * @param userid 
+	 * @return</pre>    
+	 */
+	List<Tree> queryTeacherTree(String userid);
+	/** <pre>queryType(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月31日 下午2:11:34    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月31日 下午2:11:34    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	Map<String, Object> findclass(Integer pageSize, Integer start);
+	/** <pre>selectcourse(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 上午10:45:35    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 上午10:45:35    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Course> selectcourse(String userid);
+
+	/** <pre>selectTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午4:58:40    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午4:58:40    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<StuTree> selectTree();
+
+	/** <pre>selectTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午4:01:19    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午4:01:19    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	
+}

@@ -1,0 +1,75 @@
+/** 
+ * <pre>项目名称:education-consumer 
+ * 文件名称:YtlController.java 
+ * 包名:com.jk.controller.ytl 
+ * 创建日期:2018年10月30日下午2:16:03 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.controller.ytl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.jk.model.Course;
+import com.jk.model.StuTree;
+import com.jk.service.IeduService;
+
+/** 
+ * <pre>项目名称：education-consumer    
+ * 类名称：YtlController    
+ * 类描述：    
+ * 创建人：杨同隆 565598097@qq.com    
+ * 创建时间：2018年10月30日 下午2:16:03    
+ * 修改人：杨同隆 565598097@qq.com  
+ * 修改时间：2018年10月30日 下午2:16:03    
+ * 修改备注：       
+ * @version </pre>    
+ */
+@Controller
+@RequestMapping("ytl")
+public class YtlController {
+    
+	 @Autowired IeduService ieduService;
+	
+	 @RequestMapping("selectcourse")
+	 @ResponseBody
+	 public List<Course> selectcourse(String userid){
+		 
+		 return ieduService.selectcourse(userid);
+	 }
+	 @RequestMapping("tostu")
+	 public String tostu(){
+		 
+		 
+		 return "ytl/front_student";
+	 }
+	 @RequestMapping("tomain")
+	 public String tomain(){
+		 
+		 
+		 return "ytl/main";
+	 }
+	 @RequestMapping("toaddorg")
+	 public String toaddorg(){
+		 
+		 
+		 return "ytl/add_org";
+	 }
+	 @RequestMapping("todeatilstu")
+	 public String todeatilstu(){
+		 
+		 
+		 return "ytl/detail_student";
+	 }
+	 @RequestMapping("selectTree")
+	 @ResponseBody
+	 public List<StuTree> selectTree(){
+		 
+		 
+		 return ieduService.selectTree();
+	 }
+}

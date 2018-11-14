@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.IeduDaoWS" >
+  
+   <select id="getLogin" resultType="com.jk.model.WSmodel">
+   
+   select * from t_user where username = #{username} and userpassword = #{userpassword}
+   
+   </select>
+   
+   <select id="getLogin1" resultType="com.jk.model.WSmodel">
+   
+   select * from t_user where username = #{username}
+   
+   </select>
+   
+   <select id="queryType" resultType="com.jk.model.WSmodel">
+   
+   select * from t_course
+   
+   </select>
+  
+   <!-- <insert id=""></insert> -->
+   <select id="findclass" resultType="com.jk.model.WSmodel">
+   
+   select 
+   a.classroomid as classroomid,
+		a.classroomname as classroomname,
+		a.classroomgrade as classroomgrade,
+		e.coursename as classroomsubject,
+		b.teachername as instructor,
+		d.helpteachername as specifyteacher,
+		a.classroominfo as classroominfo,
+		a.classroomstarttime as classroomstarttime,
+		a.approvalstatus as approvalstatus
+    from t_classroom a,t_teacher b,t_helpteacher d,t_course e
+    where a.classroomsubject = e.cousrseid and a.instructor = b.teacherid and a.specifyteacher = d.helpteacherid
+   <if test="classroomname != null and classroomname != ''">
+   
+   and a.classroomname like '%${classroomname}%'
+   
+   </if>
+   <if test="classroomproject != null and classroomproject != ''">
+   
+   and a.classroomsubject = #{classroomproject}
+   
+   </if>
+    limit #{start},#{pageSize}
+   
+   </select>
+   <select id="findtotal" resultType="Integer">
+   
+   select 
+   count(*)
+    from t_classroom a,t_teacher b,t_helpteacher d,t_course e
+    where a.classroomsubject = e.cousrseid and a.instructor = b.teacherid and a.specifyteacher = d.helpteacherid
+   <if test="classroomname != null and classroomname != ''">
+   
+   and a.classroomname like '%${classroomname}%'
+   
+   </if>
+   <if test="classroomproject != null and classroomproject != ''">
+   
+   and a.classroomsubject = #{classroomproject}
+   
+   </if>
+   
+   </select>
+   <delete id="delclass">
+   
+   DELETE from t_classroom where classroomid = #{classroomid}
+   
+   </delete>
+   <update id="updateclass">
+   
+   UPDATE t_classroom  set approvalstatus = 1 where classroomid = #{classroomid}
+   
+   </update>
+  
+</mapper>

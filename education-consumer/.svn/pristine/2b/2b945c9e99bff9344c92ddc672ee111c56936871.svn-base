@@ -1,0 +1,31 @@
+ package com.jk.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.jk.service.IeduService;
+
+/** 
+ * <pre>项目名称：education-consumer    
+ * 类名称：EduControllerWS    
+ * 类描述：    
+ * 创建人：王硕 3190552680@qq.com    
+ * 创建时间：2018年10月29日 下午5:02:33    
+ * 修改人：王硕 3190552680@qq.com  
+ * 修改时间：2018年10月29日 下午5:02:33    
+ * 修改备注：       
+ * @version </pre>    
+ */
+ @Controller
+public class EduControllerWS {
+
+	 @Autowired IeduService ieduService;
+	 
+	 public void test(){
+		 
+		 String ff = ieduService.test();
+		 
+		 System.out.println(ff);
+	 }
+	 
+}

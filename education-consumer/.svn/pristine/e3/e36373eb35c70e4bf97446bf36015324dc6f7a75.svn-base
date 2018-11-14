@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form id="add-form">
+课堂名称：<div class="form-group">
+		    <label for="proName">课堂名称</label>
+		    <input type="text" class="form-control" name="classroomname"  id="proName" placeholder="产品名称">
+	   </div>
+开课时间：<div class="form-group">
+		    <label for="exampleInputPassword1">开课时间</label>
+		    <input type="date" name="classroomgrade" class="form-control" placeholder="时间" />
+	   </div>
+开课年级：<div class="form-group">
+		    <label for="exampleInputPassword1">开课年级</label>
+		    <input type="text" name="classroomgrade" class="form-control" placeholder="开课年级" />
+       </div>
+学科范畴： <div class="form-group">
+		    <label for="proDate">学科范畴</label>
+		    	<select id="classroomsubject" name="classroomsubject" class="form-control">
+				  <option value="">请选择....</option>
+				</select>
+		  </div>
+授课老师：<div class="form-group">
+		    <label for="exampleInputPassword1">授课老师</label>
+		    <input type="text" name="instructor" class="form-control" placeholder="授课老师" />
+		  </div>
+听课学生：<div class="form-group">
+		    <label for="exampleInputPassword1">听课学生</label>
+		    <input type="text" name="classroomstudent" class="form-control" placeholder="听课学生" />
+		  </div>
+指定助教：<div class="form-group">
+		    <label for="exampleInputPassword1">指定助教</label>
+		    <input type="text" name="specifyteacher" class="form-control" placeholder="指定助教" />
+		  </div>
+课程说明:<div class="form-group">
+		    <label for="exampleInputPassword1">课程说明</label>
+		    <input type="text" name="classroominfo" class="form-control" placeholder="课程说明" />
+		  </div>
+</form>
+</body>
+</html>

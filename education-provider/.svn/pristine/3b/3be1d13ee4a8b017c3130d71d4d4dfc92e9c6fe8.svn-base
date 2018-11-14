@@ -1,0 +1,187 @@
+/** 
+ * <pre>项目名称:education-provider 
+ * 文件名称:EduServiceWS.java 
+ * 包名:com.jk.service 
+ * 创建日期:2018年10月29日下午5:01:49 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.service;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.jk.mapper.IeduDaoWS;
+import com.jk.model.WSmodel;
+
+import com.jk.mapper.yunschool.YunSchoolMapper;
+import com.jk.model.Course;
+import com.jk.model.StuTree;
+import com.jk.model.tree.Tree;
+
+/** 
+ * <pre>项目名称：education-provider    
+ * 类名称：EduServiceWS    
+ * 类描述：    
+ * 创建人：王硕 3190552680@qq.com    
+ * 创建时间：2018年10月29日 下午5:01:49    
+ * 修改人：王硕 3190552680@qq.com  
+ * 修改时间：2018年10月29日 下午5:01:49    
+ * 修改备注：       
+ * @version </pre>    
+ */
+public class EduServiceWS implements IeduService {
+	
+	@Autowired
+	private YunSchoolMapper yunSchoolMapper;
+
+	@Autowired IeduDaoWS ieduDaoWS;
+	
+	//测试链接
+	@Override
+	public String test() {
+
+		String ff = "哈哈";
+		
+		return ff;
+	}
+	
+	//
+	@Override
+	public List<Tree> queryTeacherTree(String userid) {
+		List<Tree> treeAll =recursionTreed("0",userid);
+		System.out.println(treeAll);
+		return treeAll;
+	}
+
+	//登录
+	@Override
+	public HashMap<String, Object> getLogin(String username, String userpassword) {
+
+		HashMap<String, Object> mmp = new HashMap<String, Object>();
+		String hh = "";
+		
+		WSmodel list1 = ieduDaoWS.getLogin1(username);
+		
+		if(list1!=null){
+			String userpassword2 = list1.getUserpassword();
+			System.out.println(userpassword2);
+			if(userpassword.equals(userpassword2)){
+				
+				hh = "1";
+				
+				mmp.put("user", list1);
+				mmp.put("n", hh);
+				
+				return mmp;
+				
+			}else{
+				
+				hh = "2";
+				mmp.put("user", null);
+				mmp.put("n", hh);
+				
+				return mmp;
+				
+			}
+			
+		}else{
+			
+			hh = "3";
+			mmp.put("user", null);
+			mmp.put("n", hh);
+			
+			return mmp;
+			
+		}
+
+	}
+
+	/** <pre>recursionTreed(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午3:39:10    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午3:39:10    
+	 * 修改备注： 
+	 * @param userid 
+	 * @param string
+	 * @return</pre>    
+	 */
+	private List<Tree> recursionTreed(String pid, String userid) {
+		//根据id查询子节点列表
+        List<Tree> trees = yunSchoolMapper.recursionTree(pid,userid);
+        //判断查询到数据，则循环操作
+        if(trees != null && trees.size()>0){
+            for (int i = 0; i < trees.size(); i++) {
+                //根据当前节点id查询新的子集列表，
+                List<Tree> trees2 = recursionTreed(trees.get(i).getId().toString(),userid);
+//              将列表set到当前树节点对象中
+                trees.get(i).setNodes(trees2);
+            }
+        }
+        return trees;
+	}
+
+	//
+	@Override
+	public Map<String, Object> findclass(Integer pageSize, Integer start) {
+
+		List<WSmodel> list = ieduDaoWS.findclass(pageSize,start);
+		Integer gg = ieduDaoWS.findtotal();
+		Map<String, Object> mmp = new HashMap<>();
+		mmp.put("rows", list);
+		mmp.put("total", gg);
+		
+		return mmp;
+	}
+
+	/* (non-Javadoc)    
+	 * @see com.jk.service.IeduService#selectcourse()    
+	 */
+	@Override
+	public List<Course> selectcourse(String uerid) {
+		
+		return yunSchoolMapper.selectcourse(uerid);
+	}
+	
+	/* (non-Javadoc)    
+	 * @see com.jk.service.IeduService#selectTree()    
+	 */
+	@Override
+	public List<StuTree> selectTree() {
+	
+//		String id="0";
+//		return getNodes(id);
+		return yunSchoolMapper.selectTree();
+	}
+
+	/* (non-Javadoc)    
+	 * @see com.jk.service.IeduService#queryTeacherTree()    
+	 */
+	@Override
+	public List<Tree> queryTeacherTree() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+//	public List<StuTree> getNodes(String id) {
+//		List<StuTree> trees=yunSchoolMapper.getNode(id);
+//		for (StuTree Tree : trees) {
+//			List<StuTree> nodes = getNodes(Tree.getId());
+//			if(nodes!=null && nodes.size()>0) {
+//				Tree.setLeaf(false);
+//				Tree.setSelectable(false);
+//				Tree.setNodes(nodes);
+//			}else {
+//				Tree.setLeaf(true);
+//				Tree.setSelectable(true);
+//			}
+//		}
+//		return trees;
+//	}
+}

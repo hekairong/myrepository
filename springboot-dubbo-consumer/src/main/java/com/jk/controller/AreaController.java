@@ -24,9 +24,9 @@ import com.jk.service.AreaService;
  * <pre>项目名称：springboot-dubbo-consumer    
  * 类名称：AreaController    
  * 类描述：    
- * 创建人： 任智伟
+ * 创建人： 贺凯荣
  * 创建时间：2018年11月13日 下午5:03:25    
- * 修改人： 任智伟  
+ * 修改人： 贺凯荣  
  * 修改时间：2018年11月13日 下午5:03:25    
  * 修改备注：       
  * @version </pre>    

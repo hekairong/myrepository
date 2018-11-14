@@ -1,0 +1,184 @@
+package com.jk.service;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.jk.model.helpteacher.HelpTeacher;
+import com.jk.model.student.Student;
+import com.jk.model.subject.Subject;
+import com.jk.model.teacher.Teacher;
+import com.jk.model.WSmodel;
+import com.jk.model.Course;
+import com.jk.model.StuTree;
+import com.jk.model.tree.Tree;
+import com.jk.model.yunschool.YunSchool;
+
+
+/** 
+ * <pre>项目名称：education-provider    
+ * 类名称：IeduServiceWS    
+ * 类描述：    
+ * 创建人：王硕 3190552680@qq.com    
+ * 创建时间：2018年10月29日 下午4:39:35    
+ * 修改人：王硕 3190552680@qq.com  
+ * 修改时间：2018年10月29日 下午4:39:35    
+ * 修改备注：       
+ * @version </pre>    
+ */
+public interface IeduService {
+
+	/** <pre>test(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月29日 下午7:51:50    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月29日 下午7:51:50    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	String test();
+	/** <pre>getLogin(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月30日 下午4:44:48    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月30日 下午4:44:48    
+	 * 修改备注： 
+	 * @param username
+	 * @param userpassword
+	 * @param request 
+	 * @return</pre>    
+	 */
+	HashMap<String, Object> getLogin(String username, String userpassword);
+	/** <pre>queryTeacherTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午3:27:35    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午3:27:35    
+	 * 修改备注： 
+	 * @param userid 
+	 * @return</pre>    
+	 */
+	List<Tree> queryTeacherTree(String userid);
+	/** <pre>queryType(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月31日 下午2:11:34    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月31日 下午2:11:34    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	Map<String, Object> findclass(Integer pageSize, Integer start);
+	/** <pre>selectcourse(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 上午10:45:35    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 上午10:45:35    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Course> selectcourse(String userid);
+
+	/** <pre>addClassRoom(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月30日 下午10:34:39    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月30日 下午10:34:39    
+	 * 修改备注： 
+	 * @param yunschool</pre>    
+	 */
+	void addClassRoom(YunSchool yunschool);
+
+	/** <pre>querySubjectList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:15:27    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:15:27    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Subject> querySubjectList();
+
+	/** <pre>queryTeacherList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:15:31    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:15:31    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Teacher> queryTeacherList();
+
+	/** <pre>queryHelpTeacherList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:15:34    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:15:34    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<HelpTeacher> queryHelpTeacherList();
+
+	/** <pre>queryStudentList(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 上午10:15:38    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 上午10:15:38    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<Student> queryStudentList();
+
+	/** <pre>myCloudSchool(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 下午8:16:38    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 下午8:16:38    
+	 * 修改备注： 
+	 * @param yunschool
+	 * @return</pre>    
+	 */
+	List<YunSchool> myCloudSchool(YunSchool yunschool);
+
+	/** <pre>queryYunSchoolById(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年10月31日 下午11:18:34    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年10月31日 下午11:18:34    
+	 * 修改备注： 
+	 * @param yunschool
+	 * @return</pre>    
+	 */
+	YunSchool queryYunSchoolById(YunSchool yunschool);
+
+	/** <pre>queryYunSchoolPage(这里用一句话描述这个方法的作用)   
+	 * 创建人：贺凯荣
+	 * 创建时间：2018年11月1日 上午10:27:09    
+	 * 修改人：贺凯荣
+	 * 修改时间：2018年11月1日 上午10:27:09    
+	 * 修改备注： 
+	 * @param yunschool
+	 * @return</pre>    
+	 */
+	List<YunSchool> queryYunSchoolPage(YunSchool yunschool);
+
+	/** <pre>selectTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午4:58:40    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午4:58:40    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	List<StuTree> selectTree();
+
+	/** <pre>selectTree(这里用一句话描述这个方法的作用)   
+	 * 创建人：杨同隆 565598097@qq.com 
+	 * 创建时间：2018年10月31日 下午4:01:19    
+	 * 修改人：杨同隆 565598097@qq.com  
+	 * 修改时间：2018年10月31日 下午4:01:19    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	
+}

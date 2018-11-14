@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.yunschool.YunSchoolMapper">
+   
+    <select id="recursionTree" resultType="com.jk.model.tree.Tree" >
+       
+		select 
+		a.id as id,a.text as text,a.url as url,a.pid as pid 
+		from t_tree a ,t_tree_user b ,t_user c
+		where a.id = b.treeid and pid= #{pid} and b.powerid = c.powerid and c.userid = #{userid}
+       
+    </select>
+    <select id="selectcourse" resultType="com.jk.model.Course" >
+       select * from t_course c 
+                             left join  t_user u on c.userid=u.userid 
+                                 where  c.userid=#{userid}
+    </select>
+   <select id="getNode" resultType="com.jk.model.StuTree">
+	   select * from t_stutree  where pid=#{id}
+	</select>
+	<select id="selectTree" resultType="com.jk.model.StuTree">
+      select * from t_stutree
+    </select>
+</mapper>

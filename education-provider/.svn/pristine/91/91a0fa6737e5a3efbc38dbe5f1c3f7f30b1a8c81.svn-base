@@ -1,0 +1,33 @@
+/** 
+ * <pre>项目名称:education-provider 
+ * 文件名称:IeduServiceWS.java 
+ * 包名:com.jk.service 
+ * 创建日期:2018年10月29日下午4:39:35 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.service;
+
+/** 
+ * <pre>项目名称：education-provider    
+ * 类名称：IeduServiceWS    
+ * 类描述：    
+ * 创建人：王硕 3190552680@qq.com    
+ * 创建时间：2018年10月29日 下午4:39:35    
+ * 修改人：王硕 3190552680@qq.com  
+ * 修改时间：2018年10月29日 下午4:39:35    
+ * 修改备注：       
+ * @version </pre>    
+ */
+public interface IeduService {
+
+	/** <pre>test(这里用一句话描述这个方法的作用)   
+	 * 创建人：王硕 3190552680@qq.com     
+	 * 创建时间：2018年10月29日 下午7:51:50    
+	 * 修改人：王硕 3190552680@qq.com     
+	 * 修改时间：2018年10月29日 下午7:51:50    
+	 * 修改备注： 
+	 * @return</pre>    
+	 */
+	String test();
+
+}

@@ -22,9 +22,9 @@ import com.jk.model.User;
  * <pre>项目名称：springboot-dubbo-provider    
  * 类名称：AreaMapper    
  * 类描述：    
- * 创建人： 任智伟
+ * 创建人： 贺凯荣
  * 创建时间：2018年11月13日 下午4:22:11    
- * 修改人： 任智伟  
+ * 修改人： 贺凯荣  
  * 修改时间：2018年11月13日 下午4:22:11    
  * 修改备注：       
  * @version </pre>    
@@ -33,9 +33,9 @@ import com.jk.model.User;
 public interface AreaMapper {
 
 	/** <pre>getNodes(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月13日 下午6:46:27    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月13日 下午6:46:27    
 	 * 修改备注： 
 	 * @param id
@@ -45,9 +45,9 @@ public interface AreaMapper {
 	List<TreeBean> getNodes(String id);
 
 	/** <pre>queryUser(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月12日 下午7:20:53    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月12日 下午7:20:53    
 	 * 修改备注： 
 	 * @return</pre>    
@@ -56,9 +56,9 @@ public interface AreaMapper {
 	List<User> queryUser();
 
 	/** <pre>addUser(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月12日 下午8:26:38    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月12日 下午8:26:38    
 	 * 修改备注： 
 	 * @param user</pre>    
@@ -68,9 +68,9 @@ public interface AreaMapper {
 	void addUser(User user);
 
 	/** <pre>updaUser(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月12日 下午8:28:12    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月12日 下午8:28:12    
 	 * 修改备注： 
 	 * @param user</pre>    
@@ -80,9 +80,9 @@ public interface AreaMapper {
 	void updaUser(User user);
 
 	/** <pre>queryCarById(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月12日 下午8:49:24    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月12日 下午8:49:24    
 	 * 修改备注： 
 	 * @param userid</pre>    
@@ -92,9 +92,9 @@ public interface AreaMapper {
 	User queryCarById(String userid);
 
 	/** <pre>delUser(这里用一句话描述这个方法的作用)   
-	 * 创建人：任智伟
+	 * 创建人：贺凯荣
 	 * 创建时间：2018年11月12日 下午8:59:03    
-	 * 修改人：任智伟      
+	 * 修改人：贺凯荣      
 	 * 修改时间：2018年11月12日 下午8:59:03    
 	 * 修改备注： 
 	 * @param userid</pre>    

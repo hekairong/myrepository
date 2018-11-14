@@ -1,0 +1,159 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/js/link/bootstrap-fileinput/fileinput.min.css" />
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/link/bootstrap-fileinput/fileinput.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/link/bootstrap-fileinput/zh.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<span class="navbar-brand">名师直播课堂后台系统</span>
+		</div>
+		<div class="navbar-header">
+			<h5><a class="glyphicon glyphicon-log-in" href="#">前往名师直播课堂</a></h5>
+		</div>
+		<div class="navbar-right">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="glyphicon glyphicon-user" id="username">用户名称</span>
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">账号注销</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		</div>
+	</nav>
+	
+	<div class="container-fluid col-md-2">
+        <div class="row">
+            <div class="col-md-12">
+                <ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
+                    <li class="active">
+                           	<h2>用户管理</h2>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            	机构设置
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-user"></i>
+                          	  角色&账号
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="./grid.html">
+                            <i class="glyphicon glyphicon-globe"></i>
+                           	 分发配置
+                            <span class="label label-warning pull-right">5</span>
+                        </a>
+                    </li> -->
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                            	审批设置
+                        </a>
+                    </li>
+                    <li class="active">
+                        
+                           	<h2>统计分析</h2>
+                        
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-fire"></i>
+                           		综合统计
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-fire"></i>
+                           		排课统计
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-fire"></i>
+                           		访问明细
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-fire"></i>
+                           		课堂数据
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container-fluid col-md-10">
+    	<h1>机构设置</h1><br>
+   		<form class="form-horizontal" role="form">
+              <div class="form-group">
+                 <label class="col-sm-1 control-label" for="ds_host">机构名称:</label>
+                 <div class="col-sm-4">
+                    <input class="form-control" id="ds_host" type="text" placeholder=""/>
+                 </div>
+              </div>
+              <div class="form-group">
+                 <label class="col-sm-1 control-label" for="file-0ac">机构Logo:</label>
+                 <div class="col-md-4 tl th">
+			        <input id="file-0ac" class="file" name="file" type="file" multiple data-min-file-count="1"> 
+			        <input class="form-control" id="scgc" name="img" type="text" />
+		         </div>
+              </div>
+              <div class="form-group">
+                 <label class="col-sm-1 control-label" for="ds_host">机构介绍:</label>
+                 <div class="col-sm-4">
+                    <input class="form-control" id="ds_host" type="text" placeholder=""/>
+                 </div>
+              </div>
+              <div class="form-group">
+                 <label class="col-sm-1 control-label" for="ds_host">机构账户:</label>
+                 <div class="col-sm-4">
+                    <input class="form-control" id="ds_host" type="text" placeholder=""/>
+                 </div>
+              </div>
+              <div class="form-group">
+                 <label class="col-sm-1 control-label" for="ds_host">机构密码:</label>
+                 <div class="col-sm-4">
+                    <input class="form-control" id="ds_host" type="text" placeholder=""/>
+                 </div>
+              </div>
+         </form>
+    </div>
+    
+    
+    <script type="text/javascript">
+    	$('#file-0ac').fileinput({
+	        language: 'zh',
+// 	     	uploadAsync:false,
+// 	     	showCaption:false,
+	        uploadUrl: '${pageContext.request.contextPath}/zwt/uploadMultipleFile.do',
+	        allowedPreviewTypes : ['image', 'html', 'text', 'video', 'audio', 'flash'],
+    	});
+   		$('#file-0ac').on('fileuploaded', function(event, data, previewId, index) {
+// 	   		alert(data.response.url);
+			$("#scgc").val(data.response.url);
+	   	});
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.IeduDaoWS" >
+  
+   <select id="queryUserCount" resultType="long">
+   	select count(*) from t_user where 1=1 
+	   	<if test="user.username!=null and user.username!=''">
+	   		and username like '%${user.username}%' 
+	   	</if>
+   </select>
+   
+   <select id="queryUserList" resultType="com.jk.model.zwt.ZwtUser">
+   	select * from t_user where 1=1 
+   		<if test="user.username!=null and user.username!=''">
+	   		and username like '%${user.username}%' 
+	   	</if>
+	   	limit #{offset},#{limit}
+   </select>
+   
+   <select id="queryOneUser" resultType="com.jk.model.zwt.ZwtUser">
+   	select * from t_user where userid = #{userid}
+   </select>
+   
+   <update id="updateUser">
+   	update t_user set username=#{username},userpassword=#{userpassword},powerid=#{powerid} where userid=#{userid}
+   </update>
+   
+   <delete id="deleteUser">
+   	delete t_user where userid=#{userid}
+   </delete>
+  
+</mapper>
