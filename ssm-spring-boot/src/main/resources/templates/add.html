@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<form id= "add_form_id">
+    	<center>
+    		<table >
+    			<tr>
+    				<th>商品名称: </th>
+    				<td><input class = "easyui-textbox" id="brokeName"  th:value="${stock.stockName}" /></td>
+
+    			</tr>
+    			<tr>
+    				<th>库存数量: </th>
+    				<td><input class = "easyui-textbox" th:value="${stock.stock}" /></td>
+    			</tr>
+    			<tr>
+    				<th>报损数量: </th>
+    				<td><input class = "easyui-textbox" id="brokeNum"  /></td>
+    			</tr>
+    			<tr>
+    				<th>报损原因: </th>
+    				<td><input class = "easyui-textbox" id="brokeReason"  /></td>
+    			</tr>
+    			<tr>
+    				<th>报损人: </th>
+    				<td><input class = "easyui-textbox" id="applicant"  /></td>
+    			</tr>
+    		</table>
+    	</center>
+    </form>
+    <script type="text/javascript">
+    	function addBroke(){
+    	  	   var brokeName = $("#brokeName").val();
+    	  	   var brokeNum = $("#brokeNum").val();
+    	  	   var brokeReason = $("#brokeReason").val();
+    	  	   var applicant = $("#applicant").val();
+    	  
+    	  	   var json ={
+    	  			   
+    	  		 	brokeName:brokeName,
+    	  			brokeNum:brokeNum,
+    	  			brokeReason:brokeReason,
+    	  			applicant:applicant
+    		    		 
+    	  	   };
+    	  	   
+    	  	   return json;
+    	}
+    </script>
+</body>
+</html>

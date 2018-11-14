@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<table id="userTable"></table>
+<script type="text/javascript">
+$().ready(function(){
+	$("#userTable").bootstrapTable({
+		 url:"../User/queryUserList.do",	
+		 method:"post",
+		 striped: true,  	// 斑马线效果     默认false 
+		 //只允许选中一行
+		 singleSelect:false,
+		 //选中行是不选中复选框或者单选按钮
+		 clickToSelect:true,
+		 showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+		 cardView: false,                    //是否显示详细视图
+		 uniqueId: "id",                 //每一行的唯一标识，一般为主键列
+		 showColumns: true,                  //是否显示所有的列
+		 showRefresh: true,                  //是否显示刷新按钮
+		 minimumCountColumns: 2,     //  最少留两列
+		 detailView: false,                  //是否显示父子表
+		 //发送到服务器的数据编码类型  
+		contentType:'application/x-www-form-urlencoded;charset=UTF-8',   //数据编码纯文本  offset=0&limit=5
+		toolbar:'#tabToolBar',   //  工具定义位置
+		columns:[
+                {checkbox:true},
+		     	{field:'id',title:'用户ID',width:100},
+				{field:'username',title:'姓名',width:100},
+				{field:'userpassword',title:'密码',width:100},
+				{field:'usertype',title:'用户类型',width:100,sortable:true},
+				{field:'qq',title:'QQ号',width:100,sortable:true},
+				{field:'email',title:'用邮箱',width:100},
+				{field:'tel',title:'电话',width:100},
+				{field:'act',title:'操作',width:100,
+    	        	formatter: function(value,row,index){
+    	        		return "<input type='button' class='btn btn-primary' value='修改' onclick='updateuser(\""+row.id+"\")'>";
+    	        		}
+    	        }
+		        ],
+					 //前台--排序字段
+					 //sortName:'proPrice',
+					 //sortOrder:'desc',
+					 //前台--搜索框
+					 search:true,
+					 //启动回车键做搜索功能
+					 searchOnEnterKey:true,
+			   	    //分页方式   后台请求的分页方式
+					 sidePagination:'server',
+					 pagination: true,                   //是否显示分页（*）
+					 pageNum: 1,                       //每页的记录行数（*）
+					 pageSize: 3,                       //每页的记录行数（*）
+					 pageList: [3, 6, 9,12],        //可供选择的每页的行数（*） 
+	});
+});
+
+</script>
+</body>
+</html>

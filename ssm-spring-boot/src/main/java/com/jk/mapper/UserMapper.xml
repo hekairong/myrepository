@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.UserMapper">
+
+    <select id="recursionTree" resultType="com.jk.model.Tree" >
+    
+       select * from t_tree where pid = #{pid}
+       
+    </select>
+
+	<select id="queryUserList" resultType="com.jk.model.User">
+	
+	select * from t_userinfo
+	
+	</select>
+	
+	<insert id="addUser">
+	
+	insert into t_userinfo (id,username,userpassword,usertype,qq,email,tel) 
+	values (#{id},#{username},#{userpassword},#{usertype},#{qq},#{email},#{tel})
+	
+	</insert>
+	
+	<delete id="deleteUser">
+	
+	delete from t_userinfo where id in (${ids})
+	
+	</delete>
+	
+	<update id="updateUser">
+	
+	update t_userinfo username=#{username},userpassword=#{userpassword},usertype=#{usertype},qq=#{qq},email=#{email},tel=#{tel} where id = #{id}
+	
+	</update>
+	
+	<select id="queryUserById" resultType="com.jk.model.User">
+	
+	select * from t_userinfo where id = #{id}
+	
+	</select>
+	
+	
+</mapper>
