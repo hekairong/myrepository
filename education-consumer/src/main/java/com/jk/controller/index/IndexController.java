@@ -1,0 +1,224 @@
+/** 
+ * <pre>项目名称:education-consumer 
+ * 文件名称:IndexController.java 
+ * 包名:com.jk.controller.index 
+ * 创建日期:2018年10月30日下午2:18:47 
+ * Copyright (c) 2018, yuxy123@gmail.com All Rights Reserved.</pre> 
+ */  
+package com.jk.controller.index;
+
+import java.io.IOException;
+import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.jk.model.Course;
+import com.jk.model.WSmodel;
+import com.jk.model.yunschool.Xilike;
+import com.jk.model.yunschool.YunSchool;
+import com.jk.service.IeduService;
+
+/** 
+ * <pre>项目名称：education-consumer    
+ * 类名称：IndexController    
+ * 类描述：    
+ * 创建人：贺凯荣  
+ * 创建时间：2018年10月30日 下午2:18:47    
+ * 修改人：贺凯荣
+ * 修改时间：2018年10月30日 下午2:18:47    
+ * 修改备注：       
+ * @version </pre>    
+ */
+@Controller
+@RequestMapping("index")
+public class IndexController {
+	
+	@Autowired IeduService ieduService;
+	//首页
+	@RequestMapping("toshouye")
+	public String toshouye(){
+		return "WEB-INF/myCloudschool/cloudschoolPage";
+	}
+	//我的系列云课程页面
+	@RequestMapping("queryMoreYunSchoolPage")
+	public String queryMoreYunSchoolPage(Model model,Xilike xilieke){
+		List<Xilike> moreyunschoollist = ieduService.queryMoreYunSchoolPage(xilieke);
+		model.addAttribute("morelist", moreyunschoollist);
+		return "WEB-INF/myCloudschool/yunketangduojiepage";
+			
+	}
+	@RequestMapping("toserializecourse")
+	public String toserializecourse(){
+		return "ytl/serialize_course_list";
+	}
+	@RequestMapping("tojuese")
+	public String tojuese(){
+		return "zwt/RoleAccountNumber";
+	}
+	@RequestMapping("ziliaoliebiao")
+	public String ziliaoliebiao(){
+		return "WEB-INF/file/fileinput";
+	}
+	@RequestMapping("xinzengziliao")
+	public String xinzengziliao(){
+		return "WEB-INF/file/addfile";
+	}
+	@RequestMapping("wodexiliekec")
+	public String wodexiliekec(){
+		return "ytl/serialize_course_list";
+	}
+	@RequestMapping("wodexiliekec1")
+	public String wodexiliekec1(){
+		return "ytl/serialize_course_list2";
+	}
+	@RequestMapping("zonghetongji")
+	public String zonghetongji(){
+		return "WEB-INF/hichar/hichar";
+	}
+	@RequestMapping("xinzengJuese")
+	public String xinzengJuese(){
+		return "ytl/user_add";
+	}
+	 @RequestMapping("tostu")
+	 public String tostu(Model md,HttpServletRequest request){
+		    WSmodel attribute = (WSmodel) request.getSession().getAttribute("login");
+//		    System.out.println(attribute);
+		    String studentid = attribute.getStudentid();
+//		  String userid = request.getSession().getAttribute("login").toString();
+//		    User userEntity=ieduService.queryUserEntityByuserid(userid);
+			List<Course> clist = ieduService.querycoursebystudentid(studentid);
+			md.addAttribute("list", clist);
+		 return "ytl/front_student";
+	 }
+	 @RequestMapping("todeatilstu")
+	 public String todeatilstu(){
+		 
+		 return "ytl/detail_student";
+	 }
+	@RequestMapping("shenpiOne")
+	public String shenpiOne(){
+		return "ws/shenpiOne";
+	}
+	@RequestMapping("addmore2")
+	public String addmore2(){
+		return "ws/addmore2";
+	}
+	@RequestMapping("toadminlist")
+	public String toadminlist(){
+		return "ytl/admin_list";
+	}
+	@RequestMapping("shenpiOne1")
+	public String shenpiOne1(){
+		return "ws/shenpiOne2";
+	}
+	@RequestMapping("zhuxiao")
+	public String zhuxiao(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException{
+		request.getSession().removeAttribute("login");
+		/*request.getRequestDispatcher("index.jsp").forward(request,resp);*/
+		return "redirect:index.jsp";
+	}
+	@RequestMapping("adminadd")
+	public String adminadd(){
+		return "ws/adminadd";
+	}
+	@RequestMapping("cunShujuS")
+	public String cunShujuS(YunSchool yunschool,HttpServletRequest request){
+		
+		String hh = "";
+		
+		List<YunSchool> format = yunschool.getFormat();
+		for (int i = 0; i < format.size(); i++) {
+			
+			hh +="<tr><td><div class='form-group'>"
+	            +"<label  for='name'>子课名称</label>"
+	            +"<input type='text' id = 'soncoursename"+i+"'  class='form-control'"
+	            + " value = "+format.get(i).getSoncoursename()+" disabled></div>";
+			hh +="<div class='form-group'>"
+				+ " <label for='name' >子课时间</label>"
+				+ "<input type='text' class='form-control date' id = 'oncoursestarttime"+i+"' "
+				+ "value = "+format.get(i).getSoncoursestarttime()+" disabled></div>";
+			hh +="<div class='form-group'>"
+					+ " <label for='name' >结课时间</label>"
+					+ "<input type='text' class='form-control date' id = 'onsoncourseendtime"+i+"' "
+					+ "value = "+format.get(i).getSoncourseendtime()+" disabled></div></td></tr>";
+			
+		}
+		request.getSession().setAttribute("Xsession", yunschool);
+		request.getSession().setAttribute("hhh",format.size());
+		request.getSession().setAttribute("hhhh",hh);
+		return "/ws/Dialog";
+	}
+	//存session
+	@RequestMapping("cunSession")
+	public String cunSession(YunSchool yunschool,HttpServletRequest request){
+		request.getSession().setAttribute("Xsession", yunschool);
+		
+		return "WEB-INF/myCloudschool/addmore";
+	}
+	@RequestMapping("toaddPage")
+	public String toaddPage(){
+		return "WEB-INF/myCloudschool/add";
+	}
+	//系列课程新增页面
+	@RequestMapping("toaddmorePage")
+	public String toaddmorePage(){
+		return "WEB-INF/myCloudschool/addmore";
+	}
+	//系列子课程新增页面
+	@RequestMapping("toNextPage")
+	public String toNextPage(){
+		return "WEB-INF/myCloudschool/addmoreNext";
+	}
+	//我的云课堂页面
+	@RequestMapping("tomycloudschoolPage")
+	public String tomycloudschoolPage(){
+		return "WEB-INF/myCloudschool/myCloudschoolPage";
+	}
+	//分类添加课堂页面
+	@RequestMapping("toaddtypePage")
+	public String toaddtypePage(){
+		return "WEB-INF/myCloudschool/typeCloudschoolPage";
+	}
+	//查询助教页面
+	@RequestMapping("tohelpteacherPage")
+	public String tohelpteacherPage(){
+		return "WEB-INF/myCloudschool/helpteacherPage";
+		
+	}
+	//查询学生页面
+	@RequestMapping("tostudentPage")
+	public String tostudentPage(){
+		return "WEB-INF/myCloudschool/studentPage";
+		
+	}
+	//单课程添加
+	@RequestMapping("toaddonePage")
+	public String toaddonePage(){
+		return "WEB-INF/myCloudschool/add";
+	}
+	
+	//我的云课程页面
+	@RequestMapping("queryYunSchoolPage")
+	public String queryYunSchoolPage(Model model,YunSchool yunschool){
+		List<YunSchool> yunschoollist = ieduService.queryYunSchoolPage(yunschool);
+		model.addAttribute("list", yunschoollist);
+		return "WEB-INF/myCloudschool/myCloudschoolPage";
+		
+	}
+	
+	//老师个人中心
+    @RequestMapping("tofirstPage")
+    public String tofirstPage(){
+    	return "WEB-INF/myCloudschool/teachercenterPage";
+    }
+	
+    @RequestMapping("admincourselist")
+    public String admincourselist(){
+    	return "ytl/admincourselist";
+    }
+
+}

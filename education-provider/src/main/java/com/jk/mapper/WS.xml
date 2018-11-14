@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.IeduDaoWS" >
+  
+   <select id="getLogin" resultType="com.jk.model.WSmodel">
+   
+   select * from t_user where username = #{username} and userpassword = #{userpassword}
+   
+   </select>
+   
+   <select id="getLogin1" resultType="com.jk.model.WSmodel">
+   
+   select * from t_user where username = #{username}
+   
+   </select>
+   
+   <select id="queryType" resultType="com.jk.model.WSmodel">
+   
+   select * from t_course
+   
+   </select>
+  
+   <!-- <insert id=""></insert> -->
+   <select id="findclass" resultType="com.jk.model.WSmodel">
+   
+   select 
+   a.classroomid as classroomid,
+		a.classroomname as classroomname,
+		a.classroomgrade as classroomgrade,
+		e.coursename as classroomsubject,
+		b.teachername as instructor,
+		d.helpteachername as specifyteacher,
+		a.classroominfo as classroominfo,
+		a.classroomstarttime as classroomstarttime,
+		a.approvalstatus as approvalstatus
+    from t_classroom a,t_teacher b,t_helpteacher d,t_course e
+    where a.classroomsubject = e.cousrseid and a.instructor = b.teacherid and a.specifyteacher = d.helpteacherid
+   <if test="classroomname != null and classroomname != ''">
+   
+   and a.classroomname like '%${classroomname}%'
+   
+   </if>
+   <if test="classroomproject != null and classroomproject != ''">
+   
+   and a.classroomsubject = #{classroomproject}
+   
+   </if>
+    limit #{start},#{pageSize}
+   
+   </select>
+   <select id="findtotal" resultType="Integer">
+   
+   select 
+   count(*)
+    from t_classroom a,t_teacher b,t_helpteacher d,t_course e
+    where a.classroomsubject = e.cousrseid and a.instructor = b.teacherid and a.specifyteacher = d.helpteacherid
+   <if test="classroomname != null and classroomname != ''">
+   
+   and a.classroomname like '%${classroomname}%'
+   
+   </if>
+   <if test="classroomproject != null and classroomproject != ''">
+   
+   and a.classroomsubject = #{classroomproject}
+   
+   </if>
+   
+   </select>
+  
+   <!-- <insert id=""></insert> -->
+   <select id="findclass1" resultType="com.jk.model.WSmodel">
+   
+   select 
+   a.classroomid as classroomid,
+		a.classroomname as classroomname,
+		a.classroomgrade as classroomgrade,
+		e.coursename as classroomsubject,
+		b.teachername as instructor,
+		d.helpteachername as specifyteacher,
+		a.classroominfo as classroominfo,
+		a.classroomstarttime as classroomstarttime,
+		a.approvalstatus as approvalstatus
+    from t_classroom a,t_teacher b,t_helpteacher d,t_course e
+    where a.classroomsubject = e.cousrseid and a.instructor = b.teacherid and a.specifyteacher = d.helpteacherid
+    and a.instructor = #{id}
+   <if test="classroomname != null and classroomname != ''">
+   
+   and a.classroomname like '%${classroomname}%'
+   
+   </if>
+   <if test="classroomproject != null and classroomproject != ''">
+   
+   and a.classroomsubject = #{classroomproject}
+   
+   </if>
+    limit #{start},#{pageSize}
+   
+   </select>
+   <select id="findtotal1" resultType="Integer">
+   
+   select 
+   count(*)
+    from t_classroom a,t_teacher b,t_helpteacher d,t_course e
+    where a.classroomsubject = e.cousrseid and a.instructor = b.teacherid and a.specifyteacher = d.helpteacherid
+    and a.instructor = #{id}
+   <if test="classroomname != null and classroomname != ''">
+   
+   and a.classroomname like '%${classroomname}%'
+   
+   </if>
+   <if test="classroomproject != null and classroomproject != ''">
+   
+   and a.classroomsubject = #{classroomproject}
+   
+   </if>
+   
+   </select>
+   <delete id="delclass">
+   
+   DELETE from t_classroom where classroomid = #{classroomid}
+   
+   </delete>
+   <update id="updateclass">
+   
+   UPDATE t_classroom  set approvalstatus = 1 where classroomid = #{classroomid}
+   
+   </update>
+   <delete id="delclass2">
+   
+   DELETE from t_classroom_parents where classroomid = #{classroomid}
+   
+   </delete>
+   <update id="updateclass2">
+   
+   UPDATE t_classroom_parents  set approvalstatus = 1 where classroomid = #{classroomid}
+   
+   </update>
+   
+   <!-- 查询全部课程  -->
+   <select id="queryKeCheng" resultType="com.jk.model.yunschool.YunSchool"> 
+     select t1.cousrseid,t1.coursename, t1.teacherid as teacherid ,t2.teachername as teachername ,t3.classroomstarttime as classroomstarttime,t3.approvalstatus as approvalstatus 
+      from  t_course  t1
+     left join t_teacher t2 on t1.teacherid = t2.teacherid      
+     left join t_classroom t3  on t1.cousrseid  =  t3.classroomsubject
+    <where>
+    <if test="subject.coursename != null and subject.coursename != ''">
+		and t1.coursename like '%${subject.coursename}%'
+	</if>
+	 <if test="subject.approvalstatus != null and subject.approvalstatus != ''">
+		and t3.approvalstatus = #{subject.approvalstatus}
+	</if>
+	 </where>
+   </select>
+   
+   <!-- 报表  -->
+   	<select id="findChart" resultType="string">
+	select DATE_FORMAT(a.classroomstarttime,'%Y-%m') as month from t_classroom a
+	where DATE_FORMAT(a.classroomstarttime,'%Y')=2018
+	group by month
+	order by month
+</select>
+<select id="findChartUser" resultType="java.util.LinkedHashMap">
+select a.classroomname as name from t_classroom a
+	
+	where DATE_FORMAT(a.classroomstarttime,'%Y')=2018
+	group by name
+	order by a.classroomstarttime
+</select>
+<select id="findUsrByName" resultType="String" parameterType="String">
+	 select ifnull(a.classroomsubject,0)
+	from t_classroom a
+	where DATE_FORMAT(a.classroomstarttime,'%Y')=2018
+	and a.classroomname=#{name}
+	order by a.classroomstarttime
+
+</select>
+
+    <insert id="addMoreClassRoom">
+    
+    insert into t_classroom_parents (classroomid,classroomname,classroomgrade,classroomsubject,instructor,classroomstudent,specifyteacher,classroominfo,approvalstatus) 
+    values (#{string1},#{yunschool.classroomname},#{yunschool.classroomgrade},#{yunschool.classroomsubject},#{yunschool.instructor},#{yunschool.classroomstudent},#{yunschool.specifyteacher},#{yunschool.classroominfo},#{yunschool.approvalstatus})
+    
+    </insert>
+    <insert id="addMoreClassRoom2">
+    
+    insert into t_soncourse (soncounrseid,parentclassroomid,soncoursename,soncoursestarttime,soncourseendtime) 
+    values (#{string2},#{string1},#{soncoursename},#{soncoursestarttime},#{soncourseendtime})
+    
+    </insert>
+    	<!-- <update id="editStatus"  parameterType="实体路径">
+    update 数据库表名
+    <if test="实体状态字段==1">
+    set 数据库状态字段 = 0
+    </if>
+    <if test="实体状态字段==0">
+    set 数据库状态字段 = 1
+    </if>
+    where 数据库主键id  = #{实体id}
+  </update>
+  
+   select  * from  t_classroom_parents  t1
+   
+        select  * from  t_classroom_parents  t1
+     left join t_soncourse t2 on t1.classroomid= t2.parentclassroomid    
+     where  t1.classroomid = #{t_classroom_parents的主键id} -->
+  
+</mapper>
